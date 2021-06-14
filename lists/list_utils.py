@@ -29,5 +29,18 @@ def load_list_from_disk(path_to_list: str) -> List:
     loaded_list = pickle.load(open_file)  # load from disk
     open_file.close()
     return loaded_list
-  
-  
+
+
+def find_common_elements(list1: list, list2: list) -> List:
+    """This function takes as input two lists and returns a list with the common elements
+    Args:
+        list1 (list): first list
+        list2 (list): second list
+    Returns:
+        intersection_as_list (list): list containing the common elements between the two input lists
+    """
+    list1_as_set = set(list1)  # type: set
+    intersection = list1_as_set.intersection(list2)  # type: set
+    intersection_as_list = list(intersection)  # type: list
+
+    return intersection_as_list
