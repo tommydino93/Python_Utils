@@ -2,7 +2,7 @@ import pickle
 from typing import Iterator, Dict, List
 
 
-def save_list_to_disk(list_to_save: list, out_dir: str, out_filename: str) -> None:
+def save_pickle_list_to_disk(list_to_save: list, out_dir: str, out_filename: str) -> None:
     """This function saves a list to disk
     Args:
         list_to_save (list): list that we want to save
@@ -18,7 +18,7 @@ def save_list_to_disk(list_to_save: list, out_dir: str, out_filename: str) -> No
     open_file.close()
 
 
-def load_list_from_disk(path_to_list: str) -> List:
+def load_pickle_list_from_disk(path_to_list: str) -> List:
     """This function loads a list from disk
     Args:
         path_to_list (str): path to where the list is saved
