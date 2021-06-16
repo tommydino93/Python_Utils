@@ -24,7 +24,11 @@ def load_pickle_list_from_disk(path_to_list: str) -> List:
         path_to_list (str): path to where the list is saved
     Returns:
         loaded_list (list): loaded list
+    Raises:
+        AssertionError: if extension is not .pkl
     """
+    ext = os.path.splitext(path_to_list)[-1].lower()  # get the file extension
+    assert ext == ".pkl", "Expected .pkl file, got {} instead".format(ext)
     open_file = open(path_to_list, "rb")
     loaded_list = pickle.load(open_file)  # load from disk
     open_file.close()
