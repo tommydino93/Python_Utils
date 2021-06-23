@@ -1,4 +1,5 @@
 import math
+import time
 
 
 def round_half_up(n: float, decimals: float = 0) -> float:
@@ -15,3 +16,21 @@ def round_half_up(n: float, decimals: float = 0) -> float:
     rounded_number = math.floor(n*multiplier + 0.5) / multiplier
     
     return rounded_number
+
+
+def print_running_time(start_time, end_time, process_name):
+    """This function takes as input the start and the end time of a process and prints to console the time elapsed for this process
+    Args:
+        start_time (float): instant when the timer was started
+        end_time (float): instant when the timer was stopped
+        process_name (string): name of the process
+    Returns:
+        None
+    """
+    sentence = str(process_name)  # convert to string whatever the user inputs as third argument
+    temp = end_time - start_time  # compute time difference
+    hours = temp // 3600  # compute hours
+    temp = temp - 3600 * hours  # if hours is not zero, remove equivalent amount of seconds
+    minutes = temp // 60  # compute minutes
+    seconds = temp - 60 * minutes  # compute minutes
+    print('\n%s time: %d hh %d mm %d ss' % (sentence, hours, minutes, seconds))
