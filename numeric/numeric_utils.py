@@ -18,12 +18,12 @@ def round_half_up(n: float, decimals: float = 0) -> float:
     return rounded_number
 
 
-def print_running_time(start_time, end_time, process_name):
+def print_running_time(start_time: float, end_time: float, process_name: str):
     """This function takes as input the start and the end time of a process and prints to console the time elapsed for this process
     Args:
         start_time (float): instant when the timer was started
         end_time (float): instant when the timer was stopped
-        process_name (string): name of the process
+        process_name (str): name of the process
     Returns:
         None
     """
