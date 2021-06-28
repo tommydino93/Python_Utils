@@ -1,8 +1,7 @@
 from dateutil.parser import parse
-from dateutil.parser import parse
 
 
-def is_date(input_string: str, fuzzy: bool  = False -> bool):
+def is_date(input_string: str, fuzzy: bool = False) -> bool:
     """This function checks whether in the input string there is a date
     Args:
         input_string: str, string to check for date
