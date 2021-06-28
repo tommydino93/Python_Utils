@@ -1,6 +1,7 @@
 import os
 import pickle
-from typing import Iterator, Dict, List
+from collections import Counter
+from typing import Iterator, Dict, List, Any
 
 
 def save_pickle_list_to_disk(list_to_save: list, out_dir: str, out_filename: str) -> None:
@@ -51,3 +52,15 @@ def find_common_elements(list1: list, list2: list) -> List:
     intersection_as_list = list(intersection)  # type: list
 
     return intersection_as_list
+
+
+def most_frequent(input_list: list) -> Any:
+    """This function is given a list as input and it returns its most frequent element
+    Args:
+        input_list (list)
+    Returns:
+        most_frequent_item (*): most frequent item in the list; can be of Any type
+    """
+    occurence_count = Counter(input_list)
+    most_frequent_item = occurence_count.most_common(1)[0][0]
+    return most_frequent_item
