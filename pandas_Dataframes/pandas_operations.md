@@ -15,7 +15,7 @@ df = df.astype({"a": int, "b": float})
 df = df.reset_index(drop=True)
 ``` 
 
-4) Iterate over rows and select one item of column "a"
+4) Iterate over rows (indexes) and select one item of column "a"
 ```
 for idx, row in df.iterrows():  # loop over rows
     item = row['a']
@@ -25,4 +25,9 @@ for idx, row in df.iterrows():  # loop over rows
 5) Add new empty column (numpy needed)
 ```
 df['new_column'] = np.nan
+```  
+
+6) Remove multiple columns (e.g. columns "a" and "b")
+```
+TODO
 ```  
