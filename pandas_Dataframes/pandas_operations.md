@@ -31,3 +31,8 @@ df['new_column'] = np.nan
 ```
 df = df.drop(columns=["a", "b"])
 ```  
+
+7) Extract sub-dataframe only with columns of interest (e.g. columns "a" and "b")
+```
+sub_df = df.loc[:, ["a", "b"]]
+```  
