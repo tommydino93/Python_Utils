@@ -66,6 +66,7 @@ def most_frequent(input_list: list) -> Any:
     most_frequent_item = occurence_count.most_common(1)[0][0]
     return most_frequent_item
 
+
 def flatten_list(list_of_lists: list) -> List:
     """This function flattens the input list
     Args:
@@ -76,3 +77,16 @@ def flatten_list(list_of_lists: list) -> List:
     flattened_list = [item for sublist in list_of_lists for item in sublist]
     
     return flattened_list
+
+
+def difference_list(list1: list, list2: list) -> List:
+    """This function takes as input two lists and returns the difference list between them
+    Args:
+        list1 (list): first list
+        list2 (list): second list
+    Returns:
+        difference_list (list): list containing the difference elements between the two input lists
+    """
+    difference_list = list(set(list1) - set(list2))
+    
+    return difference_list    
