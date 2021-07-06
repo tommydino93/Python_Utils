@@ -29,5 +29,5 @@ df['new_column'] = np.nan
 
 6) Remove multiple columns (e.g. columns "a" and "b")
 ```
-TODO
+df = df.drop(columns=["a", "b"])
 ```  
