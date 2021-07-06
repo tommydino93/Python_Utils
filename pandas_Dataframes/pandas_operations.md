@@ -36,3 +36,8 @@ df = df.drop(columns=["a", "b"])
 ```
 sub_df = df.loc[:, ["a", "b"]]
 ```  
+
+8) Convert dataframe to list
+```
+df_as_list = df.values.tolist()
+```  
