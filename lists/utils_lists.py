@@ -79,7 +79,7 @@ def flatten_list(list_of_lists: list) -> List:
     return flattened_list
 
 
-def difference_list(list1: list, list2: list) -> List:
+def find_difference_list(list1: list, list2: list) -> List:
     """This function takes as input two lists and returns the difference list between them
     Args:
         list1 (list): first list
@@ -89,4 +89,4 @@ def difference_list(list1: list, list2: list) -> List:
     """
     difference_list = list(set(list1) - set(list2))
     
-    return difference_list    
+    return difference_list
