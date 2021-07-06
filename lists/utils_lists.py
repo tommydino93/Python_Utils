@@ -36,6 +36,7 @@ def load_pickle_list_from_disk(path_to_list: str) -> List:
     open_file = open(path_to_list, "rb")
     loaded_list = pickle.load(open_file)  # load from disk
     open_file.close()
+    
     return loaded_list
 
 
@@ -50,7 +51,7 @@ def find_common_elements(list1: list, list2: list) -> List:
     list1_as_set = set(list1)  # type: set
     intersection = list1_as_set.intersection(list2)  # type: set
     intersection_as_list = list(intersection)  # type: list
-
+    
     return intersection_as_list
 
 
@@ -64,3 +65,14 @@ def most_frequent(input_list: list) -> Any:
     occurence_count = Counter(input_list)  # type: Counter
     most_frequent_item = occurence_count.most_common(1)[0][0]
     return most_frequent_item
+
+def flatten_list(list_of_lists: list) -> List:
+    """This function flattens the input list
+    Args:
+        list_of_lists (list): input list of lists that we want to flatten
+    Returns:
+        flattened_list (list): flattened list
+    """
+    flattened_list = [item for sublist in list_of_lists for item in sublist]
+    
+    return flattened_list
