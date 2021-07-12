@@ -64,6 +64,7 @@ def most_frequent(input_list: list) -> Any:
     """
     occurence_count = Counter(input_list)  # type: Counter
     most_frequent_item = occurence_count.most_common(1)[0][0]
+    
     return most_frequent_item
 
 
