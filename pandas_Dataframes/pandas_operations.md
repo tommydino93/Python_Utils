@@ -37,7 +37,18 @@ df = df.drop(columns=["a", "b"])
 sub_df = df.loc[:, ["a", "b"]]
 ```  
 
-8) Convert dataframe to list
+8) Extract sub-dataframe only with rows of interes
+```
+# if the indexes are integers
+int_idxs = [0, 2]  # extract first and third rows
+sub_df = df.iloc[int_idxs, :]
+
+# if the indexes are strings
+str_idxs = ["a", "c"]  # extract rows with index "a" and "c"
+sub_df = df.loc[str_idxs, :]
+```  
+
+9) Convert dataframe to list
 ```
 df_as_list = df.values.tolist()
 ```  
