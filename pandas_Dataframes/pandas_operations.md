@@ -52,3 +52,8 @@ sub_df = df.loc[str_idxs, :]
 ```
 df_as_list = df.values.tolist()
 ```  
+
+10) Sort dataframe according to one column (e.g. column "b")
+```
+df_sorted = df.sort_values("b")
+```  
