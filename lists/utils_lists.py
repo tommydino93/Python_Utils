@@ -91,3 +91,18 @@ def find_difference_list(list1: list, list2: list) -> List:
     difference_list = list(set(list1) - set(list2))
     
     return difference_list
+
+
+def split_list_equal_sized_groups(lst: list, n: int, seed: float = 123) -> List:
+    """This function splits a list in n approximately equal-sized subgroups
+    Args:
+        lst (list): input list that we want to split
+        n (int): number of splits
+        seed (int): random seed to use; defaults to 123
+    Returns:
+        out_list (list): list of lists, where each internal list is one split
+    """
+    random.Random(seed).shuffle(lst)  # shuffle list with fixed seed
+    division = len(lst) / float(n)  # find number of items per split
+    out_list = [lst[int(round(division * i)): int(round(division * (i + 1)))] for i in range(n)]  # list of lists
+    return out_list
