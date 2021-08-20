@@ -106,3 +106,18 @@ def split_list_equal_sized_groups(lst: list, n: int, seed: float = 123) -> List:
     division = len(lst) / float(n)  # find number of items per split
     out_list = [lst[int(round(division * i)): int(round(division * (i + 1)))] for i in range(n)]  # list of lists
     return out_list
+
+
+def find_indexes_where_lists_differ(list1: list, list2: list) -> List:
+    """This function returns the indexes where the two input lists differ. THe input lists are expected to have same length
+    Args:
+        list1 (list): first input list
+        list2 (list): second input list
+    Returns:
+        out_list (list): output list containing the indexes where the two input list differ
+    Raises:
+        AssertionError: if the two input lists do not have the same length
+    """
+    assert len(list1) == len(list2), "The two input lists must have same length"
+    out_list = [idx for idx, (first, second) in enumerate(zip(list1, list2)) if first != second]
+    return out_list
