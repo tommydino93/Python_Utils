@@ -37,7 +37,7 @@ df = df.drop(columns=["a", "b"])
 sub_df = df.loc[:, ["a", "b"]]
 ```  
 
-8) Extract sub-dataframe only with rows of interes
+8) Extract sub-dataframe only with rows of interest
 ```
 # if the indexes are integers
 int_idxs = [0, 2]  # extract first and third rows
@@ -56,4 +56,10 @@ df_as_list = df.values.tolist()
 10) Sort dataframe according to one column (e.g. column "b")
 ```
 df_sorted = df.sort_values("b")
+```  
+
+11) Replace some values in multiple columns (e.g. columns "a" and "b")
+```
+cols = ["a", "b"]
+df[cols] = df[cols].replace({'0':np.nan, '1':'one'})
 ```  
