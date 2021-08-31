@@ -17,6 +17,6 @@ def sort_dict_by_value(d, reverse=False):
         sorted_dict = sorted dictionary
     """
     assert sys.version_info >= (3, 6), "This function only works with python >= 3.6" 
-    sorted_dict = dict(sorted(d.items(), key = lambda x: x[1], reverse = reverse))
+    sorted_dict = dict(sorted(d.items(), key=lambda x: x[1], reverse=reverse))
     return sorted_dict
 ```
