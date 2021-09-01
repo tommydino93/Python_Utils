@@ -20,7 +20,7 @@ def save_pickle_list_to_disk(list_to_save: list, out_dir: str, out_filename: str
     open_file.close()
 
 
-def load_pickle_list_from_disk(path_to_list: str) -> List:
+def load_pickle_list_from_disk(path_to_list: str) -> list:
     """This function loads a list from disk
     Args:
         path_to_list (str): path to where the list is saved
