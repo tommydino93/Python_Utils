@@ -28,7 +28,6 @@ def load_list_from_disk_with_pickle(path_to_list: str) -> list:
         loaded_list (list): loaded list
     Raises:
         AssertionError: if list path does not exist
-        AssertionError: if extension is not .pkl
     """
     assert os.path.exists(path_to_list), "Path {} does not exist".format(path_to_list)
     open_file = open(path_to_list, "rb")
