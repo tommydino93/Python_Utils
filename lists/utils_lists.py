@@ -4,7 +4,7 @@ from collections import Counter
 from typing import Iterator, Dict, List, Any
 
 
-def save_pickle_list_to_disk(list_to_save: list, out_dir: str, out_filename: str) -> None:
+def save_list_to_disk_with_pickle(list_to_save: list, out_dir: str, out_filename: str) -> None:
     """This function saves a list to disk
     Args:
         list_to_save (list): list that we want to save
@@ -20,7 +20,7 @@ def save_pickle_list_to_disk(list_to_save: list, out_dir: str, out_filename: str
     open_file.close()
 
 
-def load_pickle_list_from_disk(path_to_list: str) -> list:
+def load_list_from_disk_with_pickle(path_to_list: str) -> list:
     """This function loads a list from disk
     Args:
         path_to_list (str): path to where the list is saved
@@ -31,8 +31,6 @@ def load_pickle_list_from_disk(path_to_list: str) -> list:
         AssertionError: if extension is not .pkl
     """
     assert os.path.exists(path_to_list), "Path {} does not exist".format(path_to_list)
-    ext = os.path.splitext(path_to_list)[-1].lower()  # get the file extension
-    assert ext == ".pkl", "Expected .pkl file, got {} instead".format(ext)
     open_file = open(path_to_list, "rb")
     loaded_list = pickle.load(open_file)  # load from disk
     open_file.close()
