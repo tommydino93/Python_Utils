@@ -63,3 +63,8 @@ df_sorted = df.sort_values("b")
 cols = ["a", "b"]
 df[cols] = df[cols].replace({'0':np.nan, '1':'one'})
 ```  
+
+12) Select rows based on columns condition/value
+```
+df = df.loc[df["col_1"] == df["col_2"]]
+``` 
