@@ -124,7 +124,7 @@ def extract_unique_elements(lst: list, ordered=True)  -> list:
     """This function extracts the unique elements of the input list and returns them as an output list; by defualt, the returned list is ordered.
     Args:
         lst (list): input list from which we want to extract the unique elements
-        ordered (bool): whethere the output list of unique values is sorted or not; True by default
+        ordered (bool): whether the output list of unique values is sorted or not; True by default
     Returns:
         out_list (list): list containing unique values
     """
