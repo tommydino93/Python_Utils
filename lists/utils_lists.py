@@ -37,7 +37,7 @@ def load_list_from_disk_with_pickle(path_to_list: str) -> list:
     return loaded_list
 
 
-def find_common_elements(list1: list, list2: list) -> List:
+def find_common_elements(list1: list, list2: list) -> list:
     """This function takes as input two lists and returns a list with the common elements
     Args:
         list1 (list): first list
@@ -65,7 +65,7 @@ def most_frequent(input_list: list) -> Any:
     return most_frequent_item
 
 
-def flatten_list(list_of_lists: list) -> List:
+def flatten_list(list_of_lists: list) -> list:
     """This function flattens the input list
     Args:
         list_of_lists (list): input list of lists that we want to flatten
@@ -77,7 +77,7 @@ def flatten_list(list_of_lists: list) -> List:
     return flattened_list
 
 
-def find_difference_list(list1: list, list2: list) -> List:
+def find_difference_list(list1: list, list2: list) -> list:
     """This function takes as input two lists and returns the difference list between them
     Args:
         list1 (list): first list
@@ -90,7 +90,7 @@ def find_difference_list(list1: list, list2: list) -> List:
     return difference_list
 
 
-def split_list_equal_sized_groups(lst: list, n: int, seed: float = 123) -> List:
+def split_list_equal_sized_groups(lst: list, n: int, seed: float = 123) -> list:
     """This function splits a list in n approximately equal-sized subgroups
     Args:
         lst (list): input list that we want to split
@@ -105,7 +105,7 @@ def split_list_equal_sized_groups(lst: list, n: int, seed: float = 123) -> List:
     return out_list
 
 
-def find_indexes_where_lists_differ(list1: list, list2: list) -> List:
+def find_indexes_where_lists_differ(list1: list, list2: list) -> list:
     """This function returns the indexes where the two input lists differ. THe input lists are expected to have same length
     Args:
         list1 (list): first input list
@@ -117,4 +117,20 @@ def find_indexes_where_lists_differ(list1: list, list2: list) -> List:
     """
     assert len(list1) == len(list2), "The two input lists must have same length"
     out_list = [idx for idx, (first, second) in enumerate(zip(list1, list2)) if first != second]
+    return out_list
+
+
+def extract_unique_elements(lst: list, ordered=True)  -> list:
+    """This function extracts the unique elements of the input list and returns them as an output list; by defualt, the returned list is ordered.
+    Args:
+        lst (list): input list from which we want to extract the unique elements
+        ordered (bool): whethere the output list of unique values is sorted or not; True by default
+    Returns:
+        out_list (list): list containing unique values
+    """
+    out_list = list(set(lst))  # type: list
+    
+    if ordered:  # if we want to sort the list of unique values
+        out_list.sort()  # type: list
+    
     return out_list
