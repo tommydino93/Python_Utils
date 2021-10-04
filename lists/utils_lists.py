@@ -120,7 +120,7 @@ def find_indexes_where_lists_differ(list1: list, list2: list) -> list:
     return out_list
 
 
-def extract_unique_elements(lst: list, ordered=True)  -> list:
+def extract_unique_elements(lst: list, ordered=True) -> list:
     """This function extracts the unique elements of the input list and returns them as an output list; by defualt, the returned list is ordered.
     Args:
         lst (list): input list from which we want to extract the unique elements
