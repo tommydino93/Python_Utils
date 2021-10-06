@@ -48,9 +48,10 @@ str_idxs = ["a", "c"]  # extract rows with index "a" and "c"
 sub_df = df.loc[str_idxs, :]
 ```  
 
-9) Convert dataframe to list
+9) Convert whole dataframe or dataframe column to list
 ```
-df_as_list = df.values.tolist()
+df_as_list = df.values.tolist()  # convert whole datafram
+df_col_as_list = df.col_name.tolist()  # convert one column
 ```  
 
 10) Sort dataframe according to one column (e.g. column "b")
