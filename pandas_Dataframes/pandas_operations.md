@@ -69,3 +69,9 @@ df[cols] = df[cols].replace({'0':np.nan, '1':'one'})
 ```
 df = df.loc[df["col_1"] == df["col_2"]]
 ``` 
+
+13) Select rows if column value is in (```isin```) list
+```
+list_of_interest = [...]
+out_df = df[df['col_1'].isin(list_of_interest)]
+``` 
