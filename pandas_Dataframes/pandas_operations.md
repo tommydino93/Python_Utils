@@ -1,4 +1,4 @@
-## Common operations on Pandas Dataframe
+## Common operations on Pandas Dataframes
 
 1) Remove rows with NaN, NaT, etc.
 ```
@@ -74,4 +74,10 @@ df = df.loc[df["col_1"] == df["col_2"]]
 ```
 list_of_interest = [...]
 out_df = df[df['col_1'].isin(list_of_interest)]
+``` 
+
+14) Find unique values for one colum (e.g. "col_a")
+```
+list_of_interest = [...]
+unique_elements = df['col_a'].nunique()
 ``` 
