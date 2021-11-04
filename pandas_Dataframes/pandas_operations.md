@@ -78,7 +78,6 @@ out_df = df[df['col_1'].isin(list_of_interest)]
 
 14) Find unique values for one colum (e.g. "col_a")
 ```
-list_of_interest = [...]
 unique_elements = df['col_a'].nunique()
 ``` 
 
