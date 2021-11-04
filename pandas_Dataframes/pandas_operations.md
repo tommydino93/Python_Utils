@@ -83,4 +83,6 @@ unique_elements = df['col_a'].nunique()
 ``` 
 
 15) Remove rows with condition on column (e.g. "col_a")
+```
 out_df = df.drop(df[df.col_a < 50].index)
+```
