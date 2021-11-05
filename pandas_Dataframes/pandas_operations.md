@@ -76,9 +76,9 @@ list_of_interest = [...]
 out_df = df[df['col_1'].isin(list_of_interest)]
 ``` 
 
-14) Find unique values for one colum (e.g. "col_a")
+14) Find number of unique values for one colum (e.g. "col_a")
 ```
-unique_elements = df['col_a'].nunique()
+nb_unique_elements = df['col_a'].nunique()
 ``` 
 
 15) Remove rows with condition on column (e.g. "col_a")
