@@ -85,3 +85,8 @@ nb_unique_elements = df['col_a'].nunique()
 ```
 out_df = df.drop(df[df.col_a < 50].index)
 ```
+
+16) Find unique values and corresponding counts of one column (e.g. "col_a")
+```
+out_series = df['col_a'].value_counts()
+```
