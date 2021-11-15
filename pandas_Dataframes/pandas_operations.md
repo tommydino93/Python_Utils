@@ -69,6 +69,7 @@ df[cols] = df[cols].replace({'0':np.nan, '1':'one'})
 ```
 # one condition
 row_of_interest = df.loc[df["col_1"] == df["col_2"]]
+
 # multiple conditions
 row_of_interest = df[(df["col_1"] == 0) & (df["col_2"] == 1)]
 ``` 
