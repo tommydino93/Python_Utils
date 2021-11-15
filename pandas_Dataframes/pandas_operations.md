@@ -90,3 +90,8 @@ out_df = df.drop(df[df.col_a < 50].index)
 ```
 out_series = df['col_a'].value_counts()
 ```
+
+17) Change value of a specific cell (e.g. row 0, and col_a)
+```
+df.at[0, 'col_a'] = new_value
+```
