@@ -1,5 +1,5 @@
 # Python Utils
-This repository contains wrapper functions for the most common python dtypes.
+This repository contains wrapper functions and code snippets for the most common python dtypes.
 
 <br/><br/>
 
