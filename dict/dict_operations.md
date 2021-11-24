@@ -35,3 +35,26 @@ def sort_dict_by_list_of_keys(input_dict, list_of_keys):
     reordered_dict = {k: input_dict[k] for k in list_of_keys if k in input_dict.keys()}
     return reordered_dict
 ```
+
+4) Find key by value
+```python
+def find_key_by_value(input_dict, value_of_interest):
+    """This function finds the key of input_dict corresponding to the value_of_interest.
+    Args:
+        input_dict (dict): input dictionary
+        value_of_interest (*): value of which we want to find the key
+    Returns:
+        key_of_interest (*): key corresponding to value_of_interest
+    """
+    # list out keys and values separately
+    key_list = list(input_dict.keys())  # type: list
+    val_list = list(input_dict.values())  # type: list
+    
+    # find idx where value == "value_of_interest"
+    idx_of_interest = val_list.index(value_of_interest)
+    
+    # find corresponding key
+    key_of_interest = key_list[idx_of_interest]
+    
+    return key_of_interest
+```
