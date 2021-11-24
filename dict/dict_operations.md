@@ -1,13 +1,13 @@
 ## Common operations on python dictionaries
 
 1) Iterate over dictionary
-```
+```python
 for key, value in a_dict.items():
     print(key, '->', value)
 ```
 
 2) Sort dictionary by value
-```
+```python
 def sort_dict_by_value(input_dict, reverse=False):
     """This function sorts the input dictionary by value; the argument bool is used to decide between ascending or descending order.
     Args:
@@ -22,7 +22,7 @@ def sort_dict_by_value(input_dict, reverse=False):
 ```
 
 3) Sort dictionary by list of keys
-```
+```python
 def sort_dict_by_list_of_keys(input_dict, list_of_keys):
     """This function sorts the input dict according to a list of keys (also given as input).
     Args:
