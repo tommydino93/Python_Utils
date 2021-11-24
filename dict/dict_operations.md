@@ -38,23 +38,33 @@ def sort_dict_by_list_of_keys(input_dict, list_of_keys):
 
 4) Find key by value
 ```python
-def find_key_by_value(input_dict, value_of_interest):
+def find_key_by_value(input_dict: dict, value_of_interest):
     """This function finds the key of input_dict corresponding to the value_of_interest.
     Args:
         input_dict (dict): input dictionary
         value_of_interest (*): value of which we want to find the key
     Returns:
-        key_of_interest (*): key corresponding to value_of_interest
+        key_of_interest (*): key corresponding to value_of_interest; if value_of_interest is not among the dict values, None is returned
     """
     # list out keys and values separately
     key_list = list(input_dict.keys())  # type: list
     val_list = list(input_dict.values())  # type: list
-    
-    # find idx where value == "value_of_interest"
-    idx_of_interest = val_list.index(value_of_interest)
-    
-    # find corresponding key
-    key_of_interest = key_list[idx_of_interest]
-    
+
+    unq, cnt = np.unique(val_list, return_counts=True)  # find unique values and corresponding counts
+    idx_value_of_interest = np.where(unq == value_of_interest)  # find index of value identical to value_of_interest
+    cnt_value_of_interest = cnt[idx_value_of_interest]  # extract the corresponding count
+
+    if cnt_value_of_interest == 1:  # if the key value is unique
+        idx_of_interest = val_list.index(value_of_interest)
+        key_of_interest = key_list[idx_of_interest]
+    elif cnt_value_of_interest.size == 0:  # if the key value is not among the dict values
+        key_of_interest = None
+    elif cnt_value_of_interest > 1:  # if there are multiple values identical to value_of_interest
+        print("WARNING: there are multiple values identical to value_of_interest: the first one is returned")
+        idx_of_interest = val_list.index(value_of_interest)
+        key_of_interest = key_list[idx_of_interest]
+    else:
+        raise ValueError("cnt_value_of_interest cannot be negative")
+
     return key_of_interest
 ```
