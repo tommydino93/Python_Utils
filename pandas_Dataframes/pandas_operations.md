@@ -35,7 +35,8 @@ df = df.drop(columns=["a", "b"])
 
 7) Extract sub-dataframe only with columns of interest (e.g. columns "a" and "b")
 ```python
-sub_df = df.loc[:, ["a", "b"]]
+cols_of_interest = ["a", "b"]
+sub_df = df.loc[:, cols_of_interest]
 ```  
 
 8) Extract sub-dataframe only with rows of interest
