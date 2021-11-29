@@ -114,3 +114,8 @@ df = df.drop("Unnamed: 0", axis=1)
 ```python
 df['a'] = df['a'].apply(lambda x: "{}{}".format('prefix', x))
 ```
+
+20) Add leading zeros in one "col_a" when using read_csv/read_excel
+```python
+df = pd.read_excel(path_to_excel_file, converters={'col_a': '{:0>3}'.format})
+```
