@@ -65,6 +65,9 @@ df_sorted = df.sort_values("b")
 ```python
 cols = ["a", "b"]
 df[cols] = df[cols].replace({'0':np.nan, '1':'one'})
+
+# for strings, we must add str
+df["a"] = df["a"].str.replace('-', '')  # remove dash from string (e.g. useful for session dates)
 ```  
 
 12) Select rows based on columns condition/value
