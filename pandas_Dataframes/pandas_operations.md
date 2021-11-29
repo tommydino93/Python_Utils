@@ -66,7 +66,7 @@ df_sorted = df.sort_values("b")
 cols = ["a", "b"]
 df[cols] = df[cols].replace({'0':np.nan, '1':'one'})
 
-# for strings, we must add str
+# for strings, we must modify str
 df["a"] = df["a"].str.replace('-', '')  # remove dash from string (e.g. useful for session dates)
 ```  
 
@@ -108,4 +108,9 @@ df.at[0, 'col_a'] = new_value
 18) Remove "Unnamed" column from dataframe
 ```python
 df = df.drop("Unnamed: 0",axis=1)
+```
+
+19) Add string prefix to every value in column "a"
+```python
+df['a'] = df['a'].apply(lambda x: "{}{}".format('prefix', x))
 ```
