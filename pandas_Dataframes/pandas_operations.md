@@ -101,3 +101,8 @@ out_series = df['col_a'].value_counts()
 ```python
 df.at[0, 'col_a'] = new_value
 ```
+
+18) Remove "Unnamed" column from dataframe
+```python
+df = df.drop("Unnamed: 0",axis=1)
+```
