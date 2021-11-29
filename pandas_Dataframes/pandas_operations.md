@@ -18,7 +18,7 @@ df = df.reset_index(drop=True)
 4) Iterate over rows (indexes) and select one item of column "a"
 ```python
 # loop over dataframe rows
-for idx, row in df.iterrows()
+for idx, row in df.iterrows():
     item = row['a']
     ...
 ``` 
