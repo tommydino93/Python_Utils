@@ -33,13 +33,13 @@ df['new_column'] = np.nan
 df = df.drop(columns=["a", "b"])
 ```  
 
-7) Extract sub-dataframe only with columns of interest (e.g. columns "a" and "b")
+7) Extract/slice sub-dataframe only with columns of interest (e.g. columns "a" and "b")
 ```python
 cols_of_interest = ["a", "b"]
 sub_df = df.loc[:, cols_of_interest]
 ```  
 
-8) Extract sub-dataframe only with rows of interest
+8) Extract/slice sub-dataframe only with rows of interest
 ```python
 # if the indexes are integers
 int_idxs = [0, 2]  # extract first and third rows
@@ -48,6 +48,10 @@ sub_df = df.iloc[int_idxs, :]
 # if the indexes are strings
 str_idxs = ["a", "c"]  # extract rows with index "a" and "c"
 sub_df = df.loc[str_idxs, :]
+
+# extract only first N rows
+N = 10
+df_only_n_rows = df[:N]
 ```  
 
 9) Convert whole dataframe or dataframe column to list
