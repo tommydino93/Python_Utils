@@ -123,3 +123,12 @@ df['a'] = df['a'].apply(lambda x: "{}{}".format('prefix', x))
 ```python
 df = pd.read_excel(path_to_excel_file, converters={'col_a': '{:0>3}'.format})
 ```
+
+21) Drop/Remove duplicate rows based on column(s)
+```python
+# based on one column
+out_df = df.drop_duplicates("col_name", keep='first')  # set keep to ['first', 'last'] depending on which of the duplicate rows you want to keep
+
+# based on multiple columns
+out_df = df.drop_duplicates(['col_name1','col_name2','col_name3'], keep='last')
+```
