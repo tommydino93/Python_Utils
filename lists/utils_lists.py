@@ -145,4 +145,4 @@ def find_idxs_of_element_in_list(lst: list, element: Any) -> list:
     """
     idxs = [i for i, x in enumerate(lst) if x == element]
     
-    reutnr idxs
+    return idxs
