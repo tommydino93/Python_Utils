@@ -134,3 +134,15 @@ def extract_unique_elements(lst: list, ordered=True) -> list:
         out_list.sort()  # type: list
     
     return out_list
+
+def find_idxs_of_element_in_list(lst: list, element: Any) -> list:
+    """This function returns the indexes of the input list that have value == element
+    Args:
+        lst (list): input list where we search for indexes
+        element (Any): element of which we want to find the indexes
+    Returns:
+        idxs (list): list of indexes corresponding to element
+    """
+    idxs = [i for i, x in enumerate(lst) if x == element]
+    
+    reutnr idxs
