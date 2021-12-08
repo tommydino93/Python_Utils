@@ -141,6 +141,6 @@ df1 = pd.DataFrame({'id': ['A01', 'A02'], 'Name': ['ABC', 'PQR']})
 # Second DataFrame
 df2 = pd.DataFrame({'id': ['B05', 'B06'], 'Name': ['XYZ', 'TUV']})
 
-out_df = pd.concat([df1, df2])  # concatenate
-out_df = out_df.reset_index(drop=True)  # restart df indexes from 0 and make them increase without holes (i.e. missing rows)
+# ignore_index=True restarts the df indexes from 0 and make them increase without holes (i.e. missing rows)
+out_df = pd.concat([df1, df2], ignore_index=True)  # concatenate 
 ```
