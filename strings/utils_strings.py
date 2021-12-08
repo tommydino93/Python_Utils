@@ -39,7 +39,7 @@ def load_txt_file_as_string(path_txt_file: str) -> str:
         content (str): content of txt file
     """
     file = open(path_txt_file)
-    content = file.read().replace("\n", " ")
+    content = file.read()
     file.close()
     
     return content
