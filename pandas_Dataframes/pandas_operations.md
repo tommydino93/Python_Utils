@@ -2,7 +2,7 @@
 
 1) Remove rows with NaN, NaT, etc.
 ```python
-df = df.dropna()  # type: pd.DataFrame
+df = df.dropna()
 ```
 
 2) Change dtypes of columns "a" and "b"
@@ -131,4 +131,16 @@ out_df = df.drop_duplicates("col_name", keep='first')  # set keep to ['first', '
 
 # based on multiple columns
 out_df = df.drop_duplicates(['col_name1','col_name2','col_name3'], keep='last')
+```
+
+22) Concatenate two dataframes
+```python
+# First DataFrame
+df1 = pd.DataFrame({'id': ['A01', 'A02'], 'Name': ['ABC', 'PQR']})
+  
+# Second DataFrame
+df2 = pd.DataFrame({'id': ['B05', 'B06'], 'Name': ['XYZ', 'TUV']})
+
+out_df = pd.concat([df1, df2])  # concatenate
+out_df = out_df.reset_index(drop=True)  # restart df indexes from 0 and make them increase without holes (i.e. missing rows)
 ```
