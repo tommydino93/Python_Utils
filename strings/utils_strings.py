@@ -29,3 +29,17 @@ def keep_only_digits(input_string: str) -> str:
     output_string = "".join(numeric_filter)
     
     return output_string
+
+
+def load_txt_file_as_string(path_txt_file: str) -> str:
+    """This function loads a txt file and returns its content as a string.
+    Args:
+        path_txt_file (str): path to txt file
+    Returns:
+        content (str): content of txt file
+    """
+    file = open(path_txt_file)
+    content = file.read().replace("\n", " ")
+    file.close()
+    
+    return content
