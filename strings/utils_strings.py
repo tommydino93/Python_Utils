@@ -43,3 +43,16 @@ def load_txt_file_as_string(path_txt_file: str) -> str:
     file.close()
     
     return content
+
+
+def add_leading_zeros(input_string: str, out_len: int) -> str:
+    """This function adds leading zeros to the input string. The output string will have length == out_len
+    Args:
+        input_string (str): the input string
+        out_len (int): length of output string with leading zeros
+    Returns:
+        out_string (str): the initial string but wiht leading zeros up to out_len characters
+    """
+    out_string = input_string.zfill(out_len)
+    
+    return out_string
