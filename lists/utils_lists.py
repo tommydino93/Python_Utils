@@ -146,3 +146,29 @@ def find_idxs_of_element_in_list(lst: list, element: Any) -> list:
     idxs = [i for i, x in enumerate(lst) if x == element]
     
     return idxs
+
+
+def list_is_nested(input_list: list) -> bool:
+    """This function checks whether the input_list is nested (i.e. it is a list of lists).
+    Args:
+        input_list (list): the input list
+    Returns:
+        is_nested (bool): True if list is nested, False if it isn’t
+    """
+    is_nested = any(isinstance(i, list) for i in input_list)
+    
+    return is_nested
+
+
+def list_has_duplicates(input_list: list) -> bool:
+    """This function checks whether the input_list contains duplicates or not.
+    Args:
+        input_list (list): the input list where we look for duplicates
+    Returns:
+        has_duplicates (bool): True if list has duplicates, False if it doesn’t
+    """
+    if list_is_nested(input_list):
+        input_list = flatten_list(input_list)  # flatten list
+    has_duplicates = len(input_list) != len(set(input_list))
+    
+    return has_duplicates
