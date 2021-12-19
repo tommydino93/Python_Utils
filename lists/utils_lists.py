@@ -172,3 +172,16 @@ def list_has_duplicates(input_list: list) -> bool:
     has_duplicates = len(input_list) != len(set(input_list))
     
     return has_duplicates
+
+
+def first_argmax(input_list) -> int:
+    """This function returns the index of the max value. If there are duplicate max values in input_list,
+    the index of the first maximum value found will be returned.
+    Args:
+        input_list (list): list for which we want to find the argmax
+    Returns:
+        idx_max (int): index corresponding to the maximum value
+    """
+    idx_max = input_list.index(max(input_list))
+    
+    return idx_max
