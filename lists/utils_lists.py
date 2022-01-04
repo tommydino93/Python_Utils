@@ -187,11 +187,12 @@ def first_argmax(input_list) -> int:
     return idx_max
 
 
-def shuffle_two_lists_with_same_order(x: list, y: list):
+def shuffle_two_lists_with_same_order(x: list, y: list, chosen_seed=123: int):
     """This function shuffles the two input lists with the same order
     Args:
         x (list): first input list
         y (list): second input list
+        chosen_seed (int): seed to set for reproducibility
     Returns:
         shuffled_x (list): shuffled version of first list
         shuffled_y (list): shuffled version of second list
@@ -199,6 +200,7 @@ def shuffle_two_lists_with_same_order(x: list, y: list):
         AssertionError: if the two input lists do not have the same length
     """
     assert len(x) == len(y), "The two input lists must have the same length"
+    random.seed(chosen_seed)  # set seed for reproducibility
     zipped_x_and_y = list(zip(x, y))  # zip x and y together so we don't lose the order when shuffling
     random.shuffle(zipped_x_and_y)  # shuffle
     shuffled_x, shuffled_y = zip(*zipped_x_and_y)  # unzip into x and y
