@@ -187,7 +187,7 @@ def first_argmax(input_list) -> int:
     return idx_max
 
 
-def shuffle_two_lists_with_same_order(x: list, y: list, chosen_seed=123: int):
+def shuffle_two_lists_with_same_order(x: list, y: list, chosen_seed: int = 123):
     """This function shuffles the two input lists with the same order
     Args:
         x (list): first input list
