@@ -90,7 +90,7 @@ def find_difference_list(list1: list, list2: list) -> list:
     return difference_list
 
 
-def split_list_equal_sized_groups(lst: list, n: int, seed: float = 123) -> list:
+def split_list_equal_sized_groups(lst: list, n: int, seed: int = 123) -> list:
     """This function splits a list in n approximately equal-sized subgroups
     Args:
         lst (list): input list that we want to split
