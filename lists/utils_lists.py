@@ -60,9 +60,9 @@ def most_frequent_n_elements(input_list: list, n: int) -> Any:
         most_frequent_item (*): most frequent item in the list; can be of Any type
     """
     occurrence_count = Counter(input_list)  # type: Counter
-    most_frequent_n_elements = occurrence_count.most_common(n)
+    most_frequent_n_items = occurrence_count.most_common(n)
     
-    return most_frequent_n_elements
+    return most_frequent_n_items
 
 
 def flatten_list(list_of_lists: list) -> list:
