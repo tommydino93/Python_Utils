@@ -52,17 +52,17 @@ def find_common_elements(list1: list, list2: list) -> list:
     return intersection_as_list
 
 
-def most_frequent(input_list: list) -> Any:
+def most_frequent_n_elements(input_list: list, n: int) -> Any:
     """This function is given a list as input and it returns its most frequent element
     Args:
         input_list (list)
     Returns:
         most_frequent_item (*): most frequent item in the list; can be of Any type
     """
-    occurence_count = Counter(input_list)  # type: Counter
-    most_frequent_item = occurence_count.most_common(1)[0][0]
+    occurrence_count = Counter(input_list)  # type: Counter
+    most_frequent_n_elements = occurrence_count.most_common(n)
     
-    return most_frequent_item
+    return most_frequent_n_elements
 
 
 def flatten_list(list_of_lists: list) -> list:
