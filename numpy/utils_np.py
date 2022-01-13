@@ -9,7 +9,6 @@ def find_most_frequent_value(input_array: np.ndarray) -> Any:
     Returns:
         most_frequent_value (*): most frequent value
     """
-    
     values, counts = np.unique(input_array, return_counts=True)
 
     idx = np.argmax(counts)
