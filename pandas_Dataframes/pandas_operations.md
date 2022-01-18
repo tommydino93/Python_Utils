@@ -147,3 +147,8 @@ df2 = pd.DataFrame({'id': ['B05', 'B06'], 'Name': ['XYZ', 'TUV']})
 # ignore_index=True restarts the df indexes from 0 and make them increase without holes (i.e. missing rows)
 out_df = pd.concat([df1, df2], ignore_index=True)  # concatenate 
 ```
+
+23) Select one specific cell (e.g. idx 0 and column "col_a")
+```python
+one_cell = df.at[0, "col_a"]
+```
