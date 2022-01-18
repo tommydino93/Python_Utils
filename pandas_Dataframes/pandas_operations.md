@@ -87,6 +87,9 @@ row_of_interest = df[(df["col_1"] == 0) & (df["col_2"] == 1)]
 ```python
 list_of_interest = [...]
 out_df = df[df['col_1'].isin(list_of_interest)]
+
+# to get the opposite (i.e. is not in list)
+out_df = df[~df['col_1'].isin(list_of_interest)]
 ``` 
 
 14) Find number of unique values for one colum (e.g. "col_a")
