@@ -60,9 +60,11 @@ df_as_list = df.values.tolist()  # convert whole datafram
 df_col_as_list = df.col_name.tolist()  # convert one column
 ```  
 
-10) Sort dataframe according to one column (e.g. column "b")
+10) Sort dataframe according to one column (e.g. column "b") or to multiple columns (e.g. column "b" and "c")
 ```python
-df_sorted = df.sort_values("b")
+df_sorted = df.sort_values("b", ignore_index=True)  # ignore_index=True re-starts the indexes from 0
+
+df_sorted = df.sort_values(["b", "c"], ignore_index=True)  # ignore_index=True re-starts the indexes from 0
 ```  
 
 11) Replace some values in multiple columns (e.g. columns "a" and "b")
