@@ -152,3 +152,12 @@ out_df = pd.concat([df1, df2], ignore_index=True)  # concatenate
 ```python
 one_cell = df.at[0, "col_a"]
 ```
+
+24) Check dataframe is empty or not empty
+```python
+if df.empty:
+    print("dataframe is empty")
+    
+if not df.empty:
+    print("dataframe is not empty")
+```
