@@ -163,3 +163,8 @@ if df.empty:
 if not df.empty:
     print("dataframe is not empty")
 ```
+
+25) Duplicate one column (e.g. "col_b") and label it with a new name (e.g. "col_c")
+```python
+df["col_c"] = df["col_b"]  # create new column by copying from another column
+```
