@@ -176,3 +176,8 @@ df["col_c"] = df["col_b"]  # create new column by copying from another column
 ```python
 df.columns = ['new_col_name_a', 'new_col_name_b']
 ```
+
+27) Reorder columns (i.e. swap column order)
+```python
+df = df[["col_c", "col_a", "col_b"]]
+```
