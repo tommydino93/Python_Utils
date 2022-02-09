@@ -29,4 +29,17 @@ def has_nans(input_array: np.ndarray) -> bool:
     array_has_nan = np.isnan(array_sum)
     
     return array_has_nan
+
+
+def is_binary(input_array: np.ndarray) -> bool:
+    """This function checks whether the input array is binary (i.e. contains only 0s and 1s).
+    If yes, it returns True, otherwise it returns False.
+    Args:
+        input_array (np.ndarray): input array that we want to inspect
+    Returns:
+        array_is_binary (bool): True if input_array is binary; False otherwise
+    """
+    array_is_binary = np.array_equal(input_array, input_array.astype(bool))
+    
+    return array_is_binary
     
