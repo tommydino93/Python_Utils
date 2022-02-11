@@ -141,7 +141,7 @@ out_df = df.drop_duplicates("col_name", keep='first')  # set keep to ['first', '
 out_df = df.drop_duplicates(['col_name1','col_name2','col_name3'], keep='last')
 ```
 
-22) Concatenate two dataframes
+22) Concatenate (merge) two dataframes
 ```python
 # First DataFrame
 df1 = pd.DataFrame({'id': ['A01', 'A02'], 'Name': ['ABC', 'PQR']})
