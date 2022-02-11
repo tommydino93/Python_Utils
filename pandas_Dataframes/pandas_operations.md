@@ -181,3 +181,8 @@ df.columns = ['new_col_name_a', 'new_col_name_b']
 ```python
 df = df[["col_c", "col_a", "col_b"]]
 ```
+
+28) Transpose dataframe (i.e. rows become columns and viceversa)
+```python
+df_transposed = df.T
+```
