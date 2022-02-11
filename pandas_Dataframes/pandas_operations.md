@@ -79,10 +79,13 @@ df["a"] = df["a"].str.replace('-', '')  # remove dash from string (e.g. useful f
 12) Select rows based on columns condition/value
 ```python
 # one condition
-rows_of_interest = df.loc[df["col_1"] == df["col_2"]]
+rows_of_interest = df.loc[df["col_a"] == df["col_b"]]
 
-# multiple conditions
-rows_of_interest = df[(df["col_1"] == 0) & (df["col_2"] == 1)]
+# multiple conditions (AND)
+rows_of_interest = df[(df["col_a"] == 0) & (df["col_b"] == 1)]
+
+# multiple conditions (OR)
+rows_of_interest = df[(df["col_a"] == 0) | (df["col_b"] == 2)]
 ``` 
 
 13) Select rows if column value is in (```isin```) list
