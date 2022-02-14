@@ -1,5 +1,11 @@
 ## Common operations on Pandas Dataframes
 
+Example dataframe to use for quick trials
+```python
+>>> d = {'col1': [1, 2, 3], 'col2': [4, 5, 6], 'col3': [7, 8, 9]}
+>>> df = pd.DataFrame(data=d)
+```
+
 1) Remove rows with NaN, NaT, etc.
 ```python
 df = df.dropna()
@@ -190,4 +196,10 @@ df = df[["col_c", "col_a", "col_b"]]
 28) Transpose dataframe (i.e. rows become columns and viceversa)
 ```python
 df_transposed = df.T
+```
+
+29) Add new column by combining the values of already existing ones
+```python
+df["new_col"] = df["col1"] + df["col2"]  # sum of two columns
+df['mean_col1_col3'] = df[['col1', 'col3']].mean(axis=1)  # mean of two columns
 ```
