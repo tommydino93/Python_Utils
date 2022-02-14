@@ -68,3 +68,8 @@ def find_key_by_value(input_dict: dict, value_of_interest):
 
     return key_of_interest
 ```
+
+5) Find value by key
+```python
+value = d["key_of_interest"]
+```
