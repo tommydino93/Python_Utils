@@ -75,13 +75,16 @@ df_sorted = df.sort_values("b", ignore_index=True)  # ignore_index=True re-start
 df_sorted = df.sort_values(["b", "c"], ignore_index=True)  # ignore_index=True re-starts the indexes from 0
 ```  
 
-11) Replace some values in multiple columns (e.g. columns "a" and "b")
+11) Replace/change some values in multiple columns (e.g. columns "a" and "b")
 ```python
 cols = ["a", "b"]
 df[cols] = df[cols].replace({'0':np.nan, '1':'one'})
 
 # for strings, we must modify str
 df["a"] = df["a"].str.replace('-', '')  # remove dash from string (e.g. useful for session dates)
+
+# change values of col_a based on condition
+df["col_a"] = np.where(df['col_a'] <= 4, "<=4", df['col_a'])
 ```  
 
 12) Select rows based on columns condition/value
