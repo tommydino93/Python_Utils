@@ -85,6 +85,20 @@ df["a"] = df["a"].str.replace('-', '')  # remove dash from string (e.g. useful f
 
 # change values of col_a based on condition
 df["col_a"] = np.where(df['col_a'] <= 4, "<=4", df['col_a'])
+
+# change values of col_a based on multiple conditions
+# define conditions inside function
+def my_func(size):
+    if size <= 4:
+        out_size = "<=4"
+    elif 4 < size <= 5:
+        out_size = "4<s<=5"
+    elif size > 5:
+        out_size = ">5"
+    return out_size
+
+# apply conditions; axis=1 ensures that my_func is applied row-wise
+df['size'] = df.apply(lambda x: my_func(x['size']), axis=1)
 ```  
 
 12) Select rows based on columns condition/value
