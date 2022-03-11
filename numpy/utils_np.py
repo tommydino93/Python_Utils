@@ -43,3 +43,20 @@ def is_binary(input_array: np.ndarray) -> bool:
     
     return array_is_binary
     
+
+def has_values_all_in_range(input_array: np.ndarray, low: int, high: int) -> bool:
+    """This function checks whether the input array has values that lie within the range (low, high).
+    If yes, it returns True, otherwise it returns False.
+    Args:
+        input_array (np.ndarray): input array that we want to inspect
+    Returns:
+        array_is_withing_range (bool): True if input_array has values in range (low, high); False otherwise
+    """
+    mask_array_bool = (input_array > low) & (input_array < high)
+        
+    if False in mask_array_bool:  # if there is just one False value
+        array_is_withing_range = False
+    else:  # if instead all values are True
+        array_is_withing_range = True
+            
+    return array_is_withing_range
