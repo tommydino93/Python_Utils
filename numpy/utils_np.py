@@ -49,6 +49,8 @@ def has_values_all_in_range(input_array: np.ndarray, low: int, high: int) -> boo
     If yes, it returns True, otherwise it returns False.
     Args:
         input_array (np.ndarray): input array that we want to inspect
+        low (int): lower bound
+        high (int): upper bound
     Returns:
         array_is_withing_range (bool): True if input_array has values in range (low, high); False otherwise
     """
