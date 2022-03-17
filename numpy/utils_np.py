@@ -72,6 +72,9 @@ def pad_image_to_specified_shape(input_img: np.ndarray, desired_x_dim: int, desi
     Returns:
         padded_img (np.ndarray): output padded image
     """
+    
+    assert len(input_img.shape) == 2, "This function is intended for 2D arrays"
+    
     # extract dims of input image
     h = input_img.shape[0]
     w = input_img.shape[1]
