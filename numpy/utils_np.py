@@ -62,3 +62,28 @@ def has_values_all_in_range(input_array: np.ndarray, low: int, high: int) -> boo
         array_is_withing_range = True
             
     return array_is_withing_range
+
+def pad_image_to_specified_shape(input_img: np.ndarray, desired_x_dim: int, desired_y_dim: int) -> np.ndarray:
+    """This function zero-pads input_img up to the specified shape (desired_x_dim, desired_y_dim)
+    Args:
+        input_img (np.ndarray): input image that we want to pad
+        desired_x_dim (int): desired dimension 1
+        desired_y_dim (int): desired dimension 2
+    Returns:
+        padded_img (np.ndarray): output padded image
+    """
+    # extract dims of input image
+    h = input_img.shape[0]
+    w = input_img.shape[1]
+
+    # extract padding width (before and after) for rows
+    a = (desired_x_dim - h) // 2
+    aa = desired_x_dim - a - h
+    
+    # extract padding width (before and after) for cols
+    b = (desired_y_dim - w) // 2
+    bb = desired_y_dim - b - w
+    
+    padded_img = np.pad(input_img, pad_width=((a, aa), (b, bb)), mode='constant', constant_values=0)
+    
+    return padded_img
