@@ -1,6 +1,7 @@
 import os
 import pickle
 from collections import Counter
+import glob
 from typing import Iterator, Dict, List, Any
 
 
@@ -35,6 +36,25 @@ def load_list_from_disk_with_pickle(path_to_list: str) -> list:
     open_file.close()
     
     return loaded_list
+
+
+def load_list_from_partial_name_with_glob(input_dir: str, partial_filename: str) -> list:
+    """This function loads a list from disk by knowing only part of the filename
+    Args:
+        input_dir (str): directory where list was saved
+        partial_filename (str): partial filename (use * as wildcare)
+    Returns:
+        list_of_interest (list): loaded list
+    Example:
+        # suppose the filename is y_true_fold_1, we can call:
+        >>> y_true = load_list_with_glob(path_to_dir, 'y_true*')
+    """
+    
+    file_path = glob.glob(os.path.join(input_dir, partial_filename))  # type: list
+    assert len(file_path) == 1
+    list_of_interest = load_list_from_disk_with_pickle(file_path[0])
+
+    return list_of_interest
 
 
 def find_common_elements(list1: list, list2: list) -> list:
