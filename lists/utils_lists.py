@@ -50,7 +50,7 @@ def load_list_from_partial_name_with_glob(input_dir: str, partial_filename: str)
         >>> y_true = load_list_with_glob(path_to_dir, 'y_true*')
     """
     file_path = glob.glob(os.path.join(input_dir, partial_filename))  # type: list
-    assert len(file_path) == 1
+    assert len(file_path) == 1, "We expect only one filename to match"
     list_of_interest = load_list_from_disk_with_pickle(file_path[0])
 
     return list_of_interest
