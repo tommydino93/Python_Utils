@@ -75,3 +75,16 @@ def remove_zeros_ijk_from_volume(input_volume: np.ndarray) -> np.ndarray:
     cropped_volume = remove_zeros_one_coordinate(cropped_volume, input_volume.shape[2], spatial_dim=2)
 
     return cropped_volume
+
+
+def get_axes_orientations(input_nifti_volume: nib.Nifti1Image) -> tuple:
+    """This function returns the axes orientations as a tuple
+    Args:
+        input_nifti_volume (nib.Nifti1Image): the input volume for which we want the axes orientations
+    Returns:
+        orientations (tuple): the axes orientations
+    """
+    aff_mat = input_nifti_volume.affine  # type: np.ndarray # extract affine matrix
+    orientations = nib.aff2axcodes(aff_mat)
+    
+    return orientations
