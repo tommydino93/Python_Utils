@@ -104,3 +104,24 @@ def get_nibabel_header(input_nifti_volume: nib.Nifti1Image,
         print(header)
     
     return header
+
+
+def print_sitk_volume_info(path_to_nii_or_dcm: str) -> None:
+    """This function prints basic info of the input volume
+    Args:
+        path_to_nii_or_dcm (str): path to volume that we want to explore
+    Returns:
+        None
+    """
+    volume_sitk = sitk.ReadImage(path_to_nii_or_dcm)  # read as sitk Image
+    
+    print("Dimensions: {}".format(volume_sitk.GetDimension()))
+    print("Size: {}".format(volume_sitk.GetSize()))
+    print("Origin: {}".format(volume_sitk.GetOrigin()))
+    print("Spacing: {}".format(volume_sitk.GetSpacing()))
+    print("Direction cosine matrix: {}".format(volume_sitk.GetDirection()))
+    print("Nb. components per pixel_ {}".format(volume_sitk.GetNumberOfComponentsPerPixel()))
+    print("Pixel type: {}".format(volume_sitk.GetPixelID()))
+    print("Pixel ID type as string: {}".format(volume_sitk.GetPixelIDTypeAsString()))
+    print("Pixel ID value: {}".format(volume_sitk.GetPixelIDValue()))
+    
