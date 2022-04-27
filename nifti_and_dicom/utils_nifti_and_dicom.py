@@ -77,7 +77,7 @@ def remove_zeros_ijk_from_volume(input_volume: np.ndarray) -> np.ndarray:
     return cropped_volume
 
 
-def get_axes_orientations(input_nifti_volume: nib.Nifti1Image) -> tuple:
+def get_axes_orientations_with_nibabel(input_nifti_volume: nib.Nifti1Image) -> tuple:
     """This function returns the axes orientations as a tuple
     Args:
         input_nifti_volume (nib.Nifti1Image): the input volume for which we want the axes orientations
@@ -88,3 +88,19 @@ def get_axes_orientations(input_nifti_volume: nib.Nifti1Image) -> tuple:
     orientations = nib.aff2axcodes(aff_mat)
     
     return orientations
+
+
+def get_nibabel_header(input_nifti_volume: nib.Nifti1Image,
+                       print_header=False) -> nib.nifti1.Nifti1Header:
+    """This function returns the header of the nifti image/volume
+    Args:
+        input_nifti_volume (nib.Nifti1Image): the input volume for which we want the header
+        print_header (bool): whether to print the header or not; defaults to False
+    Returns:
+        header (nib.nifti1.Nifti1Header): the axes orientations
+    """
+    header = input_nifti_volume.header
+    if print_header:
+        print(header)
+    
+    return header
