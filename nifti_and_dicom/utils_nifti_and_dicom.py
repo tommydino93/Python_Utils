@@ -122,25 +122,40 @@ def read_dcm_series(dcm_dir: str) -> sitk.Image:
     return volume_sitk
 
 
-def print_sitk_volume_info(path_to_nii_or_dcm: str) -> None:
+def get_sitk_volume_info(path_to_nii_or_dcm: str, print_info: bool = False) -> dict:
     """This function prints basic info of the input volume
     Args:
         path_to_nii_or_dcm (str): path to volume that we want to explore
+        print_info (bool): whether to print the volume info or no; defaults to False
     Returns:
-        None
+        volume_info (dict): it contains all the main volume information
     """
     if os.path.isdir(path_to_nii_or_dcm):  # if path_to_nii_or_dcm is a directory
         volume_sitk = read_dcm_series(path_to_nii_or_dcm)
     else:  # if instead path_to_nii_or_dcm is a file
         volume_sitk = sitk.ReadImage(path_to_nii_or_dcm)  # read as sitk Image
     
-    print("Dimensions: {}".format(volume_sitk.GetDimension()))
-    print("Size: {}".format(volume_sitk.GetSize()))
-    print("Origin: {}".format(volume_sitk.GetOrigin()))
-    print("Spacing: {}".format(volume_sitk.GetSpacing()))
-    print("Direction cosine matrix: {}".format(volume_sitk.GetDirection()))
-    print("Nb. components per pixel_ {}".format(volume_sitk.GetNumberOfComponentsPerPixel()))
-    print("Pixel type: {}".format(volume_sitk.GetPixelID()))
-    print("Pixel ID type as string: {}".format(volume_sitk.GetPixelIDTypeAsString()))
-    print("Pixel ID value: {}".format(volume_sitk.GetPixelIDValue()))
+    volume_info = {"dimensions": volume_sitk.GetDimension(),
+                   "size": volume_sitk.GetSize(),
+                   "origin": volume_sitk.GetOrigin(),
+                   "spacing": volume_sitk.GetSpacing(),
+                   "direction_cosine_matrix": volume_sitk.GetDirection(),
+                   "nb_components_per_pixel": volume_sitk.GetNumberOfComponentsPerPixel(),
+                   "pixel_type": volume_sitk.GetPixelID(),
+                   "pixel_id_type_as_string": volume_sitk.GetPixelIDTypeAsString(),
+                   "pixel_id_value": volume_sitk.GetPixelIDValue()
+                  }
+    
+    if print_info:
+        print("Dimensions: {}".format(volume_sitk.GetDimension()))
+        print("Size: {}".format(volume_sitk.GetSize()))
+        print("Origin: {}".format(volume_sitk.GetOrigin()))
+        print("Spacing: {}".format(volume_sitk.GetSpacing()))
+        print("Direction cosine matrix: {}".format(volume_sitk.GetDirection()))
+        print("Nb. components per pixel {}".format(volume_sitk.GetNumberOfComponentsPerPixel()))
+        print("Pixel type: {}".format(volume_sitk.GetPixelID()))
+        print("Pixel ID type as string: {}".format(volume_sitk.GetPixelIDTypeAsString()))
+        print("Pixel ID value: {}".format(volume_sitk.GetPixelIDValue()))
+    
+    return volume_info
     
