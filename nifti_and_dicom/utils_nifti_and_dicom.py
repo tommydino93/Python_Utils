@@ -106,6 +106,22 @@ def get_nibabel_header(input_nifti_volume: nib.Nifti1Image,
     return header
 
 
+def read_dcm_series(dcm_dir: str) -> sitk.Image:
+    """This function reads a dicom series with SimpleITK
+    Args:
+        dcm_dit (str): directory where dicom files are stored
+    Returns:
+        volume_sitk (sitk.Image): volume loaded as sitk.Image
+    """
+    reader = sitk.ImageSeriesReader()  # create reader
+    dicom_names = reader.GetGDCMSeriesFileNames(dcm_dir)  # read dicom series
+    reader.SetFileNames(dicom_names)
+
+    volume_sitk = reader.Execute()  # extract sitk.Image
+    
+    return volume_sitk
+
+
 def print_sitk_volume_info(path_to_nii_or_dcm: str) -> None:
     """This function prints basic info of the input volume
     Args:
@@ -113,7 +129,10 @@ def print_sitk_volume_info(path_to_nii_or_dcm: str) -> None:
     Returns:
         None
     """
-    volume_sitk = sitk.ReadImage(path_to_nii_or_dcm)  # read as sitk Image
+    if os.path.isdir(path_to_nii_or_dcm):  # if path_to_nii_or_dcm is a directory
+        volume_sitk = read_dcm_series(path_to_nii_or_dcm)
+    else:  # if instead path_to_nii_or_dcm is a file
+        volume_sitk = sitk.ReadImage(path_to_nii_or_dcm)  # read as sitk Image
     
     print("Dimensions: {}".format(volume_sitk.GetDimension()))
     print("Size: {}".format(volume_sitk.GetSize()))
