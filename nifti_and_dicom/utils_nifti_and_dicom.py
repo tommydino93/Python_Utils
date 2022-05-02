@@ -139,7 +139,7 @@ def get_sitk_volume_info(path_to_nii_or_dcm: str, print_info: bool = False) -> d
                    "size": volume_sitk.GetSize(),
                    "origin": volume_sitk.GetOrigin(),
                    "spacing": volume_sitk.GetSpacing(),
-                   "direction_cosine_matrix": volume_sitk.GetDirection(),
+                   "direction": volume_sitk.GetDirection(),
                    "nb_components_per_pixel": volume_sitk.GetNumberOfComponentsPerPixel(),
                    "pixel_type": volume_sitk.GetPixelID(),
                    "pixel_id_type_as_string": volume_sitk.GetPixelIDTypeAsString(),
