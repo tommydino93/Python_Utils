@@ -235,18 +235,18 @@ def slice_by_index(lst, indexes):
     Returns:
         a new list containing elements of lst on positions specified by indexes.
     Examples:
-    >>> slice_by_index([], [])
-    []
-    >>> slice_by_index([], [0, 1])
-    []
-    >>> slice_by_index(['a', 'b', 'c'], [])
-    []
-    >>> slice_by_index(['a', 'b', 'c'], [0, 2])
-    ['a', 'c']
-    >>> slice_by_index(['a', 'b', 'c'], [0, 1])
-    ['a', 'b']
-    >>> slice_by_index(['a', 'b', 'c'], [1])
-    ['b']
+        >>> slice_by_index([], [])
+        []
+        >>> slice_by_index([], [0, 1])
+        []
+        >>> slice_by_index(['a', 'b', 'c'], [])
+        []
+        >>> slice_by_index(['a', 'b', 'c'], [0, 2])
+        ['a', 'c']
+        >>> slice_by_index(['a', 'b', 'c'], [0, 1])
+        ['a', 'b']
+        >>> slice_by_index(['a', 'b', 'c'], [1])
+        ['b']
     """
     if not lst or not indexes:
         return []
@@ -254,3 +254,22 @@ def slice_by_index(lst, indexes):
     if len(indexes) == 1:
         return [slice_]
     return list(slice_)
+
+
+def keep_only_duplicates(input_list: list):
+    """This function removes all unique values from input_list and keeps only the duplicates
+    Args:
+        input_list (list): list from which we want to remove unique values
+    Returns:
+        list_only_with_duplicates (list): output list that only contains the duplicates
+    Example:
+        >>> l = [1, 2, 2, 3, 3, 3, 4]
+        >>> out_list = keep_only_duplicates(l)
+        >>> out_list
+        [2,3]
+    """
+    counts = Counter(input_list)
+    list_only_with_duplicates = [id for id in counts if counts[id] > 1]
+    
+    return list_only_with_duplicates
+    
