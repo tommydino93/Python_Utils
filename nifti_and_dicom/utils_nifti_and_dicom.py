@@ -109,7 +109,7 @@ def get_nibabel_header(input_nifti_volume: nib.Nifti1Image,
 def read_dcm_series(dcm_dir: str) -> sitk.Image:
     """This function reads a dicom series with SimpleITK
     Args:
-        dcm_dit (str): directory where dicom files are stored
+        dcm_dir (str): directory where dicom files are stored
     Returns:
         volume_sitk (sitk.Image): volume loaded as sitk.Image
     """
