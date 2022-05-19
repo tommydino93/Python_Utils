@@ -51,7 +51,12 @@ def add_leading_zeros(input_string: str, out_len: int) -> str:
         input_string (str): the input string
         out_len (int): length of output string with leading zeros
     Returns:
-        out_string (str): the initial string but wiht leading zeros up to out_len characters
+        out_string (str): the initial string but with leading zeros up to out_len characters
+    Example:
+        >>> s = "13"
+        >>> s_out = add_leading_zeros(input_string=s, out_len=4)
+        >>> s_out
+        '0013'
     """
     out_string = input_string.zfill(out_len)
     
