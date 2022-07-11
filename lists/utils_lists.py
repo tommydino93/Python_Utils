@@ -274,3 +274,16 @@ def keep_only_duplicates(input_list: list):
     
     return list_only_with_duplicates
     
+
+def check_if_string_is_in_any_item_of_list(input_list: list, match_string: str) -> bool:
+    """This function checks whether match_string is in any of the items of input_list; if yes,
+    it returns True, otherwise it returns False.
+    Args:
+       input_list (list): input list where we search for a match
+       match_string (str): string to match
+    Returns:
+        list_contains_match_string (bool): True if list contains match_string; False otherwise
+    """
+    list_contains_match_string = bool([item for item in input_list if(match_string in item)])
+    
+    return list_contains_match_string
