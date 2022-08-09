@@ -61,3 +61,16 @@ def add_leading_zeros(input_string: str, out_len: int) -> str:
     out_string = input_string.zfill(out_len)
     
     return out_string
+
+
+def remove_leading_zeros(input_string: str) -> str:
+    """This function removes the leading zeros from input_string
+    Args:
+        input_string (str): the input string
+    Returns:
+        out_string (str): the input string without leading zeros
+    """
+    # use lstrip setting '0' as leading character, by default it would be space
+    out_string = input_string.lstrip('0')
+    
+    return out_string
