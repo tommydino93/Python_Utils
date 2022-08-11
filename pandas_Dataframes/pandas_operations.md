@@ -220,3 +220,8 @@ df_transposed = df.T
 df["new_col"] = df["col1"] + df["col2"]  # sum of two columns
 df['mean_col1_col3'] = df[['col1', 'col3']].mean(axis=1)  # mean of two columns
 ```
+
+30) Calculate median of one column
+```python
+median_value = df['Col'].median()
+```
