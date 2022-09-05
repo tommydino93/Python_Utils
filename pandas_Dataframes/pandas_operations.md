@@ -63,7 +63,7 @@ df_only_n_rows = df[:N]
 9) Convert whole dataframe or dataframe column to list
 ```python
 df_as_list = df.values.tolist()  # convert whole datafram
-df_col_as_list = df.col_name.tolist()  # convert one column
+df_col_as_list = df["col_name"].values.tolist()  # convert one column
 ```  
 
 10) Sort dataframe according to one column (e.g. column "b") or to multiple columns (e.g. column "b" and "c")
