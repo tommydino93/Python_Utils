@@ -23,10 +23,14 @@ df = df.reset_index(drop=True)
 
 4) Iterate over rows (indexes) and select one item of column "a"
 ```python
-# loop over dataframe rows
+# loop over dataframe rows (WARNING: dtype of elements is cast to lowest common denomincator of the row dtypes)
 for idx, row in df.iterrows():
     item = row['a']
     ...
+    
+# alternative to preserve dtype
+for idx in df.index:  # loop over indexes (i.e. rows)
+    item = df.loc[idx, 'a']
 ``` 
 
 5) Add new empty column (numpy needed)
