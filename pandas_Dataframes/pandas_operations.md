@@ -39,13 +39,13 @@ df['new_column'] = np.nan
 df = df.drop(columns=["a", "b"])
 ```  
 
-7) Extract/slice sub-dataframe only with columns of interest (e.g. columns "a" and "b")
+7) Extract/slice/select sub-dataframe only with columns of interest (e.g. columns "a" and "b")
 ```python
 cols_of_interest = ["a", "b"]
 sub_df = df.loc[:, cols_of_interest]
 ```  
 
-8) Extract/slice sub-dataframe only with rows of interest
+8) Extract/slice/select sub-dataframe only with rows of interest
 ```python
 # if the indexes are integers
 int_idxs = [0, 2]  # extract first and third rows
