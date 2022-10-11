@@ -159,6 +159,9 @@ df = pd.read_excel(path_to_excel_file, converters={'col_a': '{:0>3}'.format})
 
 21) Drop/Remove duplicate rows based on column(s)
 ```python
+# based on all columns (i.e. only keep unique rows)
+out_df = df.drop_duplicates()
+
 # based on one column
 out_df = df.drop_duplicates("col_name", keep='first')  # set keep to ['first', 'last'] depending on which of the duplicate rows you want to keep
 
