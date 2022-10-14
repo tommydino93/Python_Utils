@@ -1,20 +1,23 @@
 import os
 import SimpleITK as sitk
 import nibabel as nib
-from typing import Iterator, Dict, List
+from typing import Iterator, Dict, List, Tuple
 
 
-def resample_volume(volume_path: str, new_spacing: List, out_path, interpolator=sitk.sitkLinear) -> tuple:
+def resample_volume(volume_path: str,
+                    new_spacing: List,
+                    out_path: str,
+                    interpolator=sitk.sitkLinear) -> Tuple[sitk.Image, nib.Nifti1Image, np.ndarray]:
     """This function resamples the input volume to a specified voxel spacing
     Args:
-        volume_path (str): input volume path
-        new_spacing (list): desired voxel spacing that we want
-        out_path (str): path where we temporarily save the resampled output volume
-        interpolator (int): interpolator that we want to use (e.g. 1= NearNeigh., 2=linear, ...)
+        volume_path: input volume path
+        new_spacing: desired voxel spacing that we want
+        out_path: path where we temporarily save the resampled output volume
+        interpolator: interpolator that we want to use (e.g. 1= NearNeigh., 2=linear, ...)
     Returns:
-        resampled_volume_sitk_obj (sitk.Image): resampled volume as sitk object
-        resampled_volume_nii_obj (nib.Nifti1Image): resampled volume as nib object
-        resampled_volume_nii (np.ndarray): resampled volume as numpy array
+        resampled_volume_sitk_obj: resampled volume as sitk object
+        resampled_volume_nii_obj: resampled volume as nib object
+        resampled_volume_nii: resampled volume as numpy array
     """
     volume = sitk.ReadImage(volume_path)  # read volume
     original_size = volume.GetSize()  # extract size
@@ -34,9 +37,9 @@ def resample_volume(volume_path: str, new_spacing: List, out_path, interpolator=
 def remove_zeros_ijk_from_volume(input_volume: np.ndarray) -> np.ndarray:
     """This function removes all the rows, columns and slices of the input volume that only contain zero values.
     Args:
-        input_volume (np.ndarray): volume from which we want to remove zeros
+        input_volume: volume from which we want to remove zeros
     Returns:
-        cropped_volume (np.ndarray): cropped volume (i.e. input volume with zeros removed)
+        cropped_volume: cropped volume (i.e. input volume with zeros removed)
     """
     def remove_zeros_one_coordinate(input_volume_: np.ndarray, range_spatial_dim: int, spatial_dim: int):
         idxs_nonzero_slices = []  # will the contain the indexes of all the slices that have nonzero values
@@ -80,9 +83,9 @@ def remove_zeros_ijk_from_volume(input_volume: np.ndarray) -> np.ndarray:
 def get_axes_orientations_with_nibabel(input_nifti_volume: nib.Nifti1Image) -> tuple:
     """This function returns the axes orientations as a tuple
     Args:
-        input_nifti_volume (nib.Nifti1Image): the input volume for which we want the axes orientations
+        input_nifti_volume: the input volume for which we want the axes orientations
     Returns:
-        orientations (tuple): the axes orientations
+        orientations: the axes orientations
     """
     aff_mat = input_nifti_volume.affine  # type: np.ndarray # extract affine matrix
     orientations = nib.aff2axcodes(aff_mat)
@@ -91,13 +94,13 @@ def get_axes_orientations_with_nibabel(input_nifti_volume: nib.Nifti1Image) -> t
 
 
 def get_nibabel_header(input_nifti_volume: nib.Nifti1Image,
-                       print_header=False) -> nib.nifti1.Nifti1Header:
+                       print_header: bool = False) -> nib.nifti1.Nifti1Header:
     """This function returns the header of the nifti image/volume
     Args:
-        input_nifti_volume (nib.Nifti1Image): the input volume for which we want the header
-        print_header (bool): whether to print the header or not; defaults to False
+        input_nifti_volume: the input volume for which we want the header
+        print_header: whether to print the header or not; defaults to False
     Returns:
-        header (nib.nifti1.Nifti1Header): the axes orientations
+        header: the axes orientations
     """
     header = input_nifti_volume.header
     if print_header:
@@ -109,9 +112,9 @@ def get_nibabel_header(input_nifti_volume: nib.Nifti1Image,
 def read_dcm_series(dcm_dir: str) -> sitk.Image:
     """This function reads a dicom series with SimpleITK
     Args:
-        dcm_dir (str): directory where dicom files are stored
+        dcm_dir: directory where dicom files are stored
     Returns:
-        volume_sitk (sitk.Image): volume loaded as sitk.Image
+        volume_sitk: volume loaded as sitk.Image
     """
     reader = sitk.ImageSeriesReader()  # create reader
     dicom_names = reader.GetGDCMSeriesFileNames(dcm_dir)  # read dicom series
@@ -122,13 +125,14 @@ def read_dcm_series(dcm_dir: str) -> sitk.Image:
     return volume_sitk
 
 
-def get_sitk_volume_info(path_to_nii_or_dcm: str, print_info: bool = False) -> dict:
+def get_sitk_volume_info(path_to_nii_or_dcm: str,
+                         print_info: bool = False) -> dict:
     """This function prints basic info of the input volume
     Args:
-        path_to_nii_or_dcm (str): path to volume that we want to explore
-        print_info (bool): whether to print the volume info or no; defaults to False
+        path_to_nii_or_dcm: path to volume that we want to explore
+        print_info: whether to print the volume info or no; defaults to False
     Returns:
-        volume_info (dict): it contains all the main volume information
+        volume_info: it contains all the main volume information
     """
     if os.path.isdir(path_to_nii_or_dcm):  # if path_to_nii_or_dcm is a directory
         volume_sitk = read_dcm_series(path_to_nii_or_dcm)
@@ -167,7 +171,7 @@ def change_dcm_tags_one_derived_image(ds: pydicom.dataset.FileDataset,
                                       series_time: str,
                                       new_series_name: str,
                                       new_protocol_name: str,
-                                      original_study_instance_uid: pydicom.uid.UID):
+                                      original_study_instance_uid: pydicom.uid.UID) -> pydicom.dataset.FileDataset:
     """This function changes some dicom tags for the derived volume (following https://gdcm.sourceforge.net/wiki/index.php/Writing_DICOM but not only).
     Args:
         ds: pydicom object that contains the dicom tags
