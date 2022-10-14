@@ -158,4 +158,105 @@ def get_sitk_volume_info(path_to_nii_or_dcm: str, print_info: bool = False) -> d
         print("Pixel ID value: {}".format(volume_sitk.GetPixelIDValue()))
     
     return volume_info
+   
+
+def change_dcm_tags_one_derived_image(ds: pydicom.dataset.FileDataset,
+                                      series_date: str,
+                                      invented_manufacturer: str,
+                                      invented_model_name: str,
+                                      series_time: str,
+                                      new_series_name: str,
+                                      new_protocol_name: str,
+                                      original_study_instance_uid: pydicom.uid.UID):
+    """This function changes some dicom tags for the derived volume (following https://gdcm.sourceforge.net/wiki/index.php/Writing_DICOM but not only).
+    Args:
+        ds: pydicom object that contains the dicom tags
+        series_date: today's date (used as series' date)
+        invented_manufacturer: invented manufacturer name
+        invented_model_name: invented model name
+        series_time: generated time of series
+        new_series_name: name of new generated series
+        new_protocol_name: name of new generated protocol
+    Returns:
+        ds: same pydicom object, but with some modified tags
+    """
+    # below, we report all the dcm tags that will be changed
     
+    # 1) Media Storage SOP Instance UID (0002, 0003), it's a tag in the file meta information
+    generated_media_storage_sop_instance_uid = pydicom.uid.generate_uid()  # generate UID
+    ds.file_meta.MediaStorageSOPInstanceUID = generated_media_storage_sop_instance_uid
+    
+    # 2) Image Type (0008, 0008) was already modified within MeVisLab
+    
+    # 3) Instance creation date (0008, 0012)
+    if "InstanceCreationDate" in ds:
+        ds.InstanceCreationDate = series_date
+    
+    # 4) Instance creation time (0008, 0013)
+    if "InstanceCreationTime" in ds:
+        time_now = datetime.today().strftime('%H%M%S.%f')  # save time now
+        ds.InstanceCreationTime = time_now
+    
+    # 5) SOP Instance UID (0008, 0018)
+    if "SOPInstanceUID" in ds:
+        generated_sop_instance_uid = pydicom.uid.generate_uid()  # generate UID
+        ds.SOPInstanceUID = generated_sop_instance_uid
+    
+    # 6) Acquisition Time (0008, 0032); generate a unique time for each dcm image
+    if "AcquisitionTime" in ds:
+        time_now = datetime.today().strftime('%H%M%S.%f')  # save time now
+        ds.AcquisitionTime = time_now
+    
+    # 7) Series Time (0008, 0031); this needs to be the same for all dcm images in the series, so we define it outside of the function
+    if "SeriesTime" in ds:
+        ds.SeriesTime = series_time
+    
+    # 8) Content Time (0008, 0032); this needs to be different for each dcm image
+    if "ContentTime" in ds:
+        time_now = datetime.today().strftime('%H%M%S.%f')  # save time now
+        ds.ContentTime = time_now
+    
+    # 9) Manufacturer (0008, 0070)
+    if "Manufacturer" in ds:
+      ds.Manufacturer = invented_manufacturer
+    
+    # 10) Series Description (0008, 103E) was already modified within MeVisLab
+    
+    # 11) Manufacturer's model name (0008, 1090)
+    if "ManufacturerModelName" in ds:
+        ds.ManufacturerModelName = invented_model_name
+    
+    # 12) Referenced Image Sequence (0008, 1140)
+    ref_img_seq = ds.ReferencedImageSequence
+    for idx, _ in enumerate(ref_img_seq):
+        if "ReferencedSOPInstanceUID" in ref_img_seq[idx]:
+            new_uid = pydicom.uid.generate_uid()  # generate UID
+            ref_img_seq[idx].ReferencedSOPInstanceUID = new_uid
+    
+    # 13) Derivation description (0008, 2111)
+    ds.add_new(0x00082111, 'ST', 'Segmentation_Neuroinformatics_Paper')
+    
+    # 14) Source image sequence (0008, 2112): don't know what to put and how to generate a valid SQ tag
+    # ds.add_new(0x00082112, 'SQ', '')
+    
+    # 15) Sequence Name (0018, 0024)
+    if "SequenceName" in ds:
+        ds.SequenceName = new_series_name
+    
+    # 16) Protocol Name (0018, 1030)
+    if "ProtocolName" in ds:
+        ds.ProtocolName = new_protocol_name
+        
+    # 17) Study Instance UID (0020, 000D): this should be identical to the one of the original series cause the study is the same
+    if ds.StudyInstanceUID != original_study_instance_uid:  # if it's different
+        ds.StudyInstanceUID = original_study_instance_uid  # change it
+    
+    # 18) Series Instance UID (0020, 000E) was already modified in MeVisLab
+    
+    # 19) Series Number (0020, 0011) was already modified in MeVisLab
+    
+    # 20) Image Comments (0020, 4000) was already modified in MeVisLab
+    
+    # 21) Pixel Data (7FE0, 0010) was already modified in MeVisLab
+    
+    return ds    
