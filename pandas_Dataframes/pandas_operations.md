@@ -232,3 +232,8 @@ df['mean_col1_col3'] = df[['col1', 'col3']].mean(axis=1)  # mean of two columns
 ```python
 median_value = df['Col'].median()
 ```
+31) Divide each cell (every cell) of the dataframe for a constant
+```python
+constant = 3
+new_df = (df/constant).round(2)  # divide by constant and round
+```
