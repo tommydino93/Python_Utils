@@ -185,12 +185,14 @@ df2 = pd.DataFrame({'id': ['B05', 'B06'], 'Name': ['XYZ', 'TUV']})
 out_df = pd.concat([df1, df2], ignore_index=True)  # concatenate 
 ```
 
-23) Select one specific cell (e.g. idx 0 and column "col_a")
+23) Select one cell (e.g. idx 0 and column "col_a")
 ```python
 # when we know the index
 one_cell = df.at[0, "col_a"]
 # when we do not know the index
 one_cell = df['col_a'].iloc[0]  # select first row regardless of index
+# when both index and columns are strings
+one_cell = df.loc["index_name"]["column_name"]
 ```
 
 24) Check dataframe is empty or not empty
