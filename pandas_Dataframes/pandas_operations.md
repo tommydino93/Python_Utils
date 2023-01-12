@@ -241,8 +241,11 @@ constant = 3
 new_df = (df/constant).round(2)  # divide by constant and round
 ```
 
-32) Save dataframe to disk as csv file
+32) Save dataframe to disk as csv/xlsx (excel) file
 ```python
+# save as .csv
 df.to_csv(out_filepath, sep=',', index=True)  # sep is the separator; if index=False -> don't write row names
+# save as .xlsx
+df.to_excel(out_filepath, sep=',', index=True)  # sep is the separator; if index=False -> don't write row names
 ```
 
