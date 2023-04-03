@@ -181,6 +181,7 @@ def change_dcm_tags_one_derived_image(ds: pydicom.dataset.FileDataset,
         series_time: generated time of series
         new_series_name: name of new generated series
         new_protocol_name: name of new generated protocol
+        original_study_instance_uid: study instance uid of original dicom volume
     Returns:
         ds: same pydicom object, but with some modified tags
     """
