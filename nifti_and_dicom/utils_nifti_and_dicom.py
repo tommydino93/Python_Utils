@@ -207,16 +207,16 @@ def change_dcm_tags_one_derived_image(ds: pydicom.dataset.FileDataset,
         generated_sop_instance_uid = pydicom.uid.generate_uid()  # generate UID
         ds.SOPInstanceUID = generated_sop_instance_uid
     
-    # 6) Acquisition Time (0008, 0032); generate a unique time for each dcm image
+    # 6) Series Time (0008, 0031); this needs to be the same for all dcm images in the series, so we define it outside of the function
+    if "SeriesTime" in ds:
+        ds.SeriesTime = series_time
+    
+    # 7) Acquisition Time (0008, 0032); generate a unique time for each dcm image
     if "AcquisitionTime" in ds:
         time_now = datetime.today().strftime('%H%M%S.%f')  # save time now
         ds.AcquisitionTime = time_now
     
-    # 7) Series Time (0008, 0031); this needs to be the same for all dcm images in the series, so we define it outside of the function
-    if "SeriesTime" in ds:
-        ds.SeriesTime = series_time
-    
-    # 8) Content Time (0008, 0032); this needs to be different for each dcm image
+    # 8) Content Time (0008, 0033); this needs to be different for each dcm image
     if "ContentTime" in ds:
         time_now = datetime.today().strftime('%H%M%S.%f')  # save time now
         ds.ContentTime = time_now
