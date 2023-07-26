@@ -8,7 +8,10 @@ Example dataframe to use for quick trials
 
 1) Remove rows with NaN, NaT, etc.
 ```python
+# if ANY column contains NaN/NaT
 df = df.dropna()
+# if ONE (or more) SPECIFIC COLUMN(s) contains NaN/NaT
+df = df.dropna(subset=["col_name"])
 ```
 
 2) Change dtypes of columns "a" and "b"
