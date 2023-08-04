@@ -166,11 +166,11 @@ df = pd.read_excel(path_to_excel_file, converters={'col_a': '{:0>3}'.format})
 
 21) Drop/Remove duplicate rows based on column(s)
 ```python
-# based on all columns (i.e. only keep unique rows) without modifying the indexes
-out_df = df.drop_duplicates(ignore_index=False)  # leaves the indexes untouched
-
 # base on all columns (i.e. only keep unique rows) replacing the indexes with increasing order without missing idxs
 out_df = df.drop_duplicates(ignore_index=True)  # restart indexes without holes
+
+# based on all columns (i.e. only keep unique rows) without modifying the indexes
+out_df = df.drop_duplicates(ignore_index=False)  # leaves the indexes untouched
 
 # based on one column
 out_df = df.drop_duplicates("col_name", keep='first')  # set keep to ['first', 'last'] depending on which of the duplicate rows you want to keep
