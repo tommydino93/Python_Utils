@@ -26,7 +26,7 @@ df = df.reset_index(drop=True)
 
 4) Iterate over rows (indexes) and select one item of column "a"
 ```python
-# loop over dataframe rows (WARNING: dtype of elements is cast to lowest common denomincator of the row dtypes)
+# loop over dataframe rows (WARNING: dtype of elements is cast to lowest common denominator of the row dtypes)
 for idx, row in df.iterrows():
     item = row['a']
     ...
